@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>01 Transpiler du TS en JS</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <style>
+    .alert, .success {
+      color: red;
+      font-weight: bold;
+    }
+    .success {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <h1>01 Transpilé du TS en JS</h1>
+  <p id="info" class="alert">Le script JS n’a pas été exécuté.</p>
+  <h2>Constat</h2>
+  <p>Depuis la console des outils de développement du navigateur, il apparait que je fichier js/script.js n’est pas chargé.</p>
+  <p>Effectivement ce fichier n’existe pas. En revanche il existe un fichier src/script.ts</p>
+  <p>Il faut donc transpiler (compiler) le fichier TS en fichier JS.</p>
+  <h2>Transpiler</h2>
+  <p>Une possibilité pour cela est d’utiliser le transpileur tsc&nbsp;:</p>
+  <ol>
+    <li>Ouvrir le terminal</li>
+    <li>Se placer dans le dossier "01 Transpiler"</li>
+    <ul>
+      <li><code>cd chemin/vers/01\ Transpiler</code></li>
+    </ul>
+    <li>Initialiser le transpileur (créer la configuration de transpilation)</li>
+    <ul>
+      <li><code>tsc --init</code></li>
+    </ul>
+    <li>Dans tsconfig.json, définir&nbsp;:</li>
+      <ul>
+        <li>"rootDir": "./src"</li>
+        <li>"outDir": "./public/js"</li>
+      </ul>
+    <li>Transpiler et surveiller les modifications</li>
+    <ul>
+      <li><code>tsc -w</code></li>
+      <li>L’option <code>-w</code> ou <code>--watch</code> permet d’automatiser la transpilation lors de l’enregistrement des fichiers TS modifiés</li>
+    </ul>
+    <li>Vérifier que le fichier js/script.js est maintenant bien chargé lors de l’affichage du index.html</li>
+    <li>Modifier le src/script.ts pour vérifier que le fichier est bien transpiler automatiquement lors de l’enregistrement</li>
+    <ul>
+      <li><code>document.querySelector('body').style.backgroundColor = 'grey';</code></li>
+    </ul>
+  </ol>
+  <script src='js/script.js' type='text/javascript'></script>
+</body>
+</html>
